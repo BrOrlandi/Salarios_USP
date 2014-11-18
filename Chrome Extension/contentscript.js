@@ -32,14 +32,17 @@ var n = this,
    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
  };
 
-function start(){
+(function start(){
 
 	id = QueryString.id;
 	if(id != undefined){
 		// get sal by id
 		professor = {name: "charler", salario: 2080.50}
 		sal = professor.salario.formatMoney();
-		var str = "<div class='salario_usp_info'>Salário: <span class='salario_usp_sal'>R$ "+sal+"</span></div>"
+		var str = "<div class='salario_usp_info'>Salário: <span class='salario_usp_sal'>R$ "+sal+"</span></div>";
 	}
-	$(".flt-left.desc_pessoa h1").after(str);
-}();
+	e = $(".flt-left.desc_pessoa h1");
+	if(e){
+		e.after(str);
+	}
+})();
