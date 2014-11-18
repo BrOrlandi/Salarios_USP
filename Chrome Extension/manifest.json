@@ -1,0 +1,20 @@
+{
+  "name": "Salários USP",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "Visualiza o salário de professores na página do professor no site dos intitutos. Por enquanto apenas ICMC.",
+  "permissions": [
+    "https://api.twitter.com/*"
+  ],
+  "icons": {
+    "48" : "sample-48.png",
+    "128" : "sample-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.icmc.usp.br/Portal/Pessoas/*"],
+      "js" : ["jquery-2.1.1.min.js", "contentscript.js"],
+      "css" : ["styles.css"]
+    }
+  ]
+}

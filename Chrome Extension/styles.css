@@ -1,0 +1,11 @@
+.salario_usp_info {
+    border-width: 2px;
+    border-color: rgb(75, 181, 32);
+    border-style: solid;
+    padding: 5px;
+}
+
+.salario_usp_sal {
+    color: rgb(75, 181, 32);
+    font-weight: bold;
+}
