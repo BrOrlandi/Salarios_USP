@@ -37,9 +37,11 @@ var n = this,
 	id = QueryString.id;
 	if(id != undefined){
 		// get sal by id
-		professor = {name: "charler", salario: 2080.50}
+		professor = {name: "charler", salario: 2080.50, anos: 4}
 		sal = professor.salario.formatMoney();
-		var str = "<div class='salario_usp_info'>Salário: <span class='salario_usp_sal'>R$ "+sal+"</span></div>";
+		anos = professor.anos;
+		var str = "<div class='salario_usp_info'>Salário: <span class='salario_usp_sal'>R$ "+sal+"</span><br>"+
+		"Anos na USP: <span class='salario_usp_anos'>"+anos+" anos.</span></div>";
 	}
 	e = $(".flt-left.desc_pessoa h1");
 	if(e){
