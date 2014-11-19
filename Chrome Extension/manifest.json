@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "description": "Visualiza o salário de professores na página do professor no site dos intitutos. Por enquanto apenas ICMC.",
   "permissions": [
-    "https://api.twitter.com/*"
+    "http://localhost:5000/*"
   ],
   "icons": {
     "48" : "USP-48.png",

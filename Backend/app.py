@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask
+from flask import Flask, Response
 app = Flask(__name__)
 
 import os
@@ -12,6 +12,7 @@ from models import *
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm.exc import NoResultFound
 
 
 # start db conection
@@ -71,9 +72,32 @@ def hello():
 def by_name(name):
 	r = s.query(SalarioUSP).filter(SalarioUSP.nome.ilike("%"+name+"%"))
 	json_r = [ serialize(sal) for sal in r]
-	#print "res = " + str(len(json_r))
-	json_str = json.dumps(json_r)
-	return json_str
+	if len(json_r) == 0:
+		code = 1
+		data = u"Salário não encontrado."
+	else:
+		code = 0
+		data = json_r
+	response = {'code': code, 'data': data}
+	json_str = json.dumps(response)
+	return Response(json_str, mimetype='application/json')
+
+@app.route("/icmc/<page_id>")
+def icmc(page_id):
+	try:
+		r = s.query(Page_ICMC).filter(Page_ICMC.page_id == int(page_id)).one()
+		json_r = serialize(r.salario_usp)
+	except NoResultFound:
+		json_r = None
+	if json_r == None:
+		code = 1
+		data = u"Salário não encontrado."
+	else:
+		code = 0
+		data = json_r
+	response = {'code': code, 'data': data}
+	json_str = json.dumps(response)
+	return Response(json_str, mimetype='application/json')
 
 
 

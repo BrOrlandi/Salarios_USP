@@ -34,17 +34,54 @@ var n = this,
 
 (function start(){
 
+  function loading(){
+    var str = "<div id='salario_usp' class='salario_usp_info'>Carregando...</div>";
+    e = $(".flt-left.desc_pessoa h1");
+    if(e){
+      e.after(str);
+    }
+  }
+
+  function setMsg(msg){
+    $("#salario_usp").html(msg);
+  }
+
+  loading();
 	id = QueryString.id;
 	if(id != undefined){
-		// get sal by id
-		professor = {name: "charler", salario: 2080.50, anos: 4}
-		sal = professor.salario.formatMoney();
-		anos = professor.anos;
-		var str = "<div class='salario_usp_info'>Salário: <span class='salario_usp_sal'>R$ "+sal+"</span><br>"+
-		"Anos na USP: <span class='salario_usp_anos'>"+anos+" anos.</span></div>";
-	}
-	e = $(".flt-left.desc_pessoa h1");
-	if(e){
-		e.after(str);
+
+    $.ajax({
+      crossDomain: true,
+      dataType: 'json',
+      url: 'http://localhost:5000/icmc/'+id,
+      error: function(jqXHR, textStatus, errorThrown){
+        setMsg("Ocorreu um erro no servidor!<br>"+errorThrown);
+      },
+      success: function(data){
+        if(data.code == 1){
+          setMsg(data.data);
+        }
+        else
+        {
+          data = data.data;
+          sal = data.salario.formatMoney();
+          if(data.tempo_usp > 1){
+            anos = data.tempo_usp+" anos.";
+          }
+          else
+          {
+            anos = data.tempo_usp+" ano.";
+          }
+
+          var str = "<span class='salario_usp_nome'>"+data.nome+"</span><br>" +
+          data.categoria+"<br>" +
+          "Salário: <span class='salario_usp_sal'>R$ "+sal+"</span><br>"+
+          "Anos na USP: <span class='salario_usp_anos'>"+anos+"</span>";
+
+          $("#salario_usp").html(str);
+
+        }
+      }
+    });
 	}
 })();
