@@ -70,10 +70,10 @@ def parse_icmc_page(url,pages):
 				new_page.salario_usp = found
 				s.add(new_page)
 			except NoResultFound:
-				print str(catch['page_id']) + "\t"+catch['nome'] + u" NÃO ENCONTRADO!"
+				print str(catch['page_id']) + "\t"+unidecode(catch['nome']) + u" NÃO ENCONTRADO!"
 				fn.write(str(catch['page_id']) + "\t"+catch['nome']+"\n")
 			except MultipleResultsFound:
-				print str(catch['page_id']) + "\t"+catch['nome'] + u" MULTIPLOS ENCONTRADO!"
+				print str(catch['page_id']) + "\t"+unidecode(catch['nome']) + u" MULTIPLOS ENCONTRADO!"
 				fm.write(str(catch['page_id']) + "\t"+catch['nome']+"\n")
 
 	fn.close()
