@@ -9,12 +9,7 @@ from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 from sqlalchemy import func
 
 
-import os
-# start db conection
-if os.getenv("MODE",None):
-	print os.environ['MODE']
-else: # dev mode
-	engine = create_engine('sqlite:///database.sqlite',encoding='utf8')
+from settings import *
 
 	
 # db session
@@ -118,12 +113,12 @@ def not_found_solved():
 
 
 
-#se = s.query(Page_ICMC).delete()
-#parse_icmc_page('http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Docente&p=',6)
-#parse_icmc_page('http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Func&p=',5)
-#parse_icmc_page('http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Apos&p=',3)
+se = s.query(Page_ICMC).delete()
+parse_icmc_page('http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Docente&p=',6)
+parse_icmc_page('http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Func&p=',5)
+parse_icmc_page('http://www.icmc.usp.br/Portal/Pessoas/index.php?categ=Apos&p=',3)
 
-#not_found_solved()
+not_found_solved()
 
 s.commit()
 
