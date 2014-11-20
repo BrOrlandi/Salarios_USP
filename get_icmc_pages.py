@@ -53,7 +53,7 @@ def parse_icmc_page(url,pages):
 			catch = {}
 			catch['page_id'] = int(parsed['id'][0])
 			catch['nome'] = unicode(x.b.string)
-			print catch['nome']
+			print unidecode(catch['nome'])
 
 			try:
 				#found = s.query(SalarioUSP).filter(unidecode(SalarioUSP.nome.value()) == unidecode(catch['nome'])).one()
