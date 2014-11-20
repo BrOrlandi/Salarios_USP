@@ -6,11 +6,10 @@ import os
 if os.getenv("MODE",None):
 	if os.environ['MODE'] == "PROD":
 		DEBUG = False
-		db_str = 'postgresql://{user}:{pass}@{host}:{port}/{dbname}'.format(
+		db_str = 'postgresql://{user}:{passw}@{host}/{dbname}'.format(
 			user=os.environ['SALARIOUSP_DB_USER'],
-			pass=os.environ['SALARIOUSP_DB_PASS'],
+			passw=os.environ['SALARIOUSP_DB_PASS'],
 			host=os.environ['SALARIOUSP_DB_HOST'],
-			port=os.environ['SALARIOUSP_DB_PORT'],
 			dbname=os.environ['SALARIOUSP_DB_NAME'])
 		engine = create_engine(db_str,encoding='utf8')
 else: # dev mode

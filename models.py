@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, backref, class_mapper
+from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 

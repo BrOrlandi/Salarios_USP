@@ -3,6 +3,9 @@ import sys
 import codecs
 
 from settings import *
+from sqlalchemy.orm import sessionmaker
+
+from models import *
 
 # db session
 session = sessionmaker()
