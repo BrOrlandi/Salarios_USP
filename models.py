@@ -14,7 +14,7 @@ class SalarioUSP(Base):
 	# data collumns
 	categoria = Column(String(100), nullable=False)
 	classe = Column(String(100), nullable=False)
-	departamento = Column(String(100), nullable=False)
+	departamento = Column(String(200), nullable=False)
 	funcao = Column(String(100), nullable=False)
 	jornada = Column(String(50), nullable=False)
 	jornada_ext = Column(String(100), nullable=False)
