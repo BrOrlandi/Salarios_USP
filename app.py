@@ -55,20 +55,20 @@ def icmc(page_id):
 	else:
 		code = 0
 		data = json_r
-		register_event('ICMC',r.salario_usp.nome)
+		register_event('ICMC/'+r.salario_usp.nome)
 
 	response = {'code': code, 'data': data}
 	json_str = json.dumps(response)
 	return Response(json_str, mimetype='application/json')
 
-def register_event(categ,act):
+def register_event(page):
 	tracker = Tracker(GA_TRACKER, DOMAIN)
 	visitor = Visitor()
-	#visitor.extract_from_server_meta(request.headers)
-	visitor.extract_from_server_meta(request.environ)
+	visitor.extract_from_server_meta(request.headers)
+	#visitor.extract_from_server_meta(request.environ)
 	session = Session()
-	event = Event(category=categ,action=act)
-	tracker.track_event(event,session,visitor)
+	page = Page(page)
+	tracker.track_pageview(page, session, visitor)
 
 
 
