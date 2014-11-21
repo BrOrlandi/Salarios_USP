@@ -11,10 +11,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
 from settings import *
-from pyga.requests import Tracker, Event, Session, Visitor
+from pyga.requests import Tracker, Page, Session, Visitor
 
-#app.debug = DEBUG
-app.debug = True
+app.debug = DEBUG
 
 GA_TRACKER = "UA-56971050-1"
 DOMAIN = "brorlandi.me"
