@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="salariosusp/fav.png">
+    <link rel="icon" href="{{ url_for('static', filename='fav.png') }}">
 
     <title>Salários USP</title>
 
@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
       
     <!-- Custom styles for this template -->
-    <link href="salariosusp/cover.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='cover.css') }}" rel="stylesheet">
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -46,23 +46,23 @@
 
           <div class="inner cover">
               <h1>Salários USP</h1>
-            <h1 class="cover-heading"><img src="salariosusp/USP-128.png"/></h1>
+            <h1 class="cover-heading"><img src="{{ url_for('static', filename='USP-128.png') }}"/></h1>
             <p class="lead">Extensão para navegadores web para exibir os salários e outras informações de professores e funcionários da USP. Por enquanto disponível apenas para o ICMC.</p>
               <br>
             <p class="lead">
-              <img class="img-responsive border_img" src="salariosusp/screenshot.png"/>
+              <img class="img-responsive border_img" src="{{ url_for('static', filename='screenshot.png') }}"/>
               </p>
               <h3>Escolha o seu navegador:</h3>
                 
             <div class="row">
               <div class="col-md-4">
-                  <a href="https://chrome.google.com/webstore/detail/ngcnphgdimpjefffddklcgldjopkdcem/publish-accepted?hl=pt-BR" target="_blank"><img src="salariosusp/chrome_128x128.png"><br>Chrome</a>
+                  <a href="https://chrome.google.com/webstore/detail/ngcnphgdimpjefffddklcgldjopkdcem/publish-accepted?hl=pt-BR" target="_blank"><img src="{{ url_for('static', filename='chrome_128x128.png') }}"><br>Chrome</a>
                 </div>
               <div class="col-md-4">
-                  <a href="https://addons.mozilla.org/pt-BR/firefox/addon/sal%C3%A1rios-usp/" target="_blank"><img src="salariosusp/firefox_128x128.png"><br>Firefox e Firefox para Android</a>
+                  <a href="https://addons.mozilla.org/pt-BR/firefox/addon/sal%C3%A1rios-usp/" target="_blank"><img src="{{ url_for('static', filename='firefox_128x128.png') }}"><br>Firefox e Firefox para Android</a>
                 </div>
               <div class="col-md-4">
-                  <a href="#"><img src="salariosusp/safari_128x128.png"><br>Safari (Em breve!)</a>
+                  <a href="#"><img src="{{ url_for('static', filename='safari_128x128.png') }}"><br>Safari (Em breve!)</a>
                 </div>
             </div>
                 
