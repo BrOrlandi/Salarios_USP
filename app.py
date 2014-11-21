@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, Response
+from flask import Flask, Response, request
 app = Flask(__name__)
 
 import json
@@ -11,8 +11,12 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.exc import NoResultFound
 
 from settings import *
+from pyga.requests import Tracker, Event, Session, Visitor
 
 app.debug = DEBUG
+
+GA_TRACKER = "UA-56971050-1"
+DOMAIN = "brorlandi.me"
 	
 # db session
 session = sessionmaker()
@@ -51,9 +55,20 @@ def icmc(page_id):
 	else:
 		code = 0
 		data = json_r
+		register_event('ICMC',r.salario_usp.nome)
+
 	response = {'code': code, 'data': data}
 	json_str = json.dumps(response)
 	return Response(json_str, mimetype='application/json')
+
+def register_event(categ,act):
+	tracker = Tracker(GA_TRACKER, DOMAIN)
+	visitor = Visitor()
+	#visitor.extract_from_server_meta(request.headers)
+	visitor.extract_from_server_meta(request.environ)
+	session = Session()
+	event = Event(category=categ,action=act)
+	tracker.track_event(event,session,visitor)
 
 
 
