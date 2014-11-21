@@ -12,6 +12,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 from settings import *
 from pyga.requests import Tracker, Page, Session, Visitor
+from unidecode import unidecode
 
 #app.debug = DEBUG
 app.debug = True
