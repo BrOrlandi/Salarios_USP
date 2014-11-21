@@ -56,7 +56,7 @@ def icmc(page_id):
 	else:
 		code = 0
 		data = json_r
-		register_event('ICMC/'+r.salario_usp.nome)
+		register_event('/ICMC/'+r.salario_usp.nome)
 
 	response = {'code': code, 'data': data}
 	json_str = json.dumps(response)
@@ -74,10 +74,3 @@ def register_event(page):
 
 if __name__ == "__main__":
     app.run()
-    print ""
-    print ""
-    print "=================================="
-    print "========== Salários USP =========="
-    print "=================================="
-    print ""
-    print ""
