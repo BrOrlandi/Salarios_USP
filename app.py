@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 app = Flask(__name__)
 
 import json
@@ -28,7 +28,7 @@ s = session()
 
 @app.route("/")
 def hello():
-    return "Hello Salários USP!"
+    return render_template("index.html")
 
 @app.route("/by_name/<name>")
 def by_name(name):
