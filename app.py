@@ -56,7 +56,7 @@ def icmc(page_id):
 	else:
 		code = 0
 		data = json_r
-		register_event('/ICMC/'+r.salario_usp.nome)
+		register_event('/ICMC/'+unidecode(r.salario_usp.nome))
 
 	response = {'code': code, 'data': data}
 	json_str = json.dumps(response)
