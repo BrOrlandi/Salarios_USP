@@ -13,7 +13,8 @@ from sqlalchemy.orm.exc import NoResultFound
 from settings import *
 from pyga.requests import Tracker, Event, Session, Visitor
 
-app.debug = DEBUG
+#app.debug = DEBUG
+app.debug = True
 
 GA_TRACKER = "UA-56971050-1"
 DOMAIN = "brorlandi.me"
@@ -64,8 +65,7 @@ def icmc(page_id):
 def register_event(page):
 	tracker = Tracker(GA_TRACKER, DOMAIN)
 	visitor = Visitor()
-	visitor.extract_from_server_meta(request.headers)
-	#visitor.extract_from_server_meta(request.environ)
+	visitor.extract_from_server_meta(request.environ)
 	session = Session()
 	page = Page(page)
 	tracker.track_pageview(page, session, visitor)
@@ -74,3 +74,10 @@ def register_event(page):
 
 if __name__ == "__main__":
     app.run()
+    print ""
+    print ""
+    print "=================================="
+    print "========== Salários USP =========="
+    print "=================================="
+    print ""
+    print ""
